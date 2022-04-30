@@ -1,9 +1,8 @@
 //create our random number generator:
 
-const randomNumbers = [...Array(5).keys()]
+const shuffle = (num) => {
 
-const shuffle = (randomNumbers) => {
-  // loop all elements
+  let randomNumbers = [...Array(num).keys()]
   for (let i = randomNumbers.length - 1; i > 0; i--) {
 
     // pickup a random element
@@ -14,13 +13,13 @@ const shuffle = (randomNumbers) => {
     randomNumbers[i] = randomNumbers[j];
     randomNumbers[j] = temp;
   }
-    // return the result
-    return randomNumbers[0]
+  //return the result
+  return randomNumbers[0]
 }
 
-function randomNum(max) {
-  return Math.floor(Math.random() * max) +1;
-}
+// function randomNum(max) {
+//   return Math.floor(Math.random() * max) +1;
+// }
 
 //create our Matsi hero object:
 
@@ -43,7 +42,7 @@ const matsi = {
       pebbles: 10,
       tangleballs: 0,
       thornfruits: 0,
-      toxabomb: 0,
+      toxabombs: 0,
     }
   },
 
@@ -69,15 +68,15 @@ const matsi = {
   forage() {
     if (lastAction != "forage") {
       console.log("You stop to look around.")
-      let chance = randomNum(5)
+      let chance = shuffle(6)
       if (chance === 1) {
         console.log("You found some berries.")
-        let addBerries = randomNum(5)
+        let addBerries = shuffle(6)
         matsi.inventory.berries += addBerries
         console.log(`You added ${addBerries} berry(ies) to your inventory.`)
       } else if (chance === 2) {
         console.log("You found some pebbles for your slingshot.")
-        let addPebbles = randomNum(5)
+        let addPebbles = shuffle(6)
         matsi.weapon.ammo.pebbles += addPebbles
         console.log(`You added ${addPebbles} pebble(s) to your inventory.`)
       } else if (chance === 3) {
@@ -103,7 +102,7 @@ const matsi = {
     if (matsi.energy > 0) {
       console.log("You travel further into the forest.")
       matsi.energy -=10
-      let chance = randomNum(5)
+      let chance = shuffle(6)
       if (chance < 4) {
         console.log("As you are walking you run into an ominous looking plant. It attacks!")
         startFight()
@@ -128,6 +127,8 @@ const matsi = {
   },
 
   attack() {
+    lastAction = "fight"
+
     if (enemy.health > 0) {
       const damage = matsi.weapon.strength;
 
@@ -147,7 +148,8 @@ const matsi = {
         
         this.xp += bonusXP;
 
-        lastAction = "fight"
+        generateDrops()
+
       }
     } else {
       console.log(`${matsi.name} can't attack (they've been eliminated)`);
@@ -189,6 +191,17 @@ const matsi = {
     } else {
       console.log("You aren't hungry right now...")
     }
+  },
+
+  //Run method for during fight to attempt to escape fight
+
+  runAway() {
+    if (matsi.energy > 50) {
+      runChance = shuffle(4)
+    } else {
+      console.log("You are too tired to run away!")
+      enemyTurn()
+    }
   }
 }
 
@@ -196,7 +209,7 @@ const matsi = {
 
 let plantBaddieTypes = ["Tangle Vine", "Thorn Spitter", "Poison Puff"]
 
-class plantBaddie {
+class plantBaddie  {
     constructor(name){
         this.name = name
         this.health = 25
@@ -226,18 +239,58 @@ class plantBaddie {
 //Interactive functions:
 
 function startFight() {
-  let randomEnemy = randomNum(3) 
-  if (randomEnemy === 1) {
-    enemy = new plantBaddie("Tangle Vine")
-  } else if (randomEnemy === 2) {
-    enemy = new plantBaddie("Thorn Spitter")
+  if (matsi.inventory.elderberry >= 5 && matsi.inventory.blackberry >= 5) {
+    enemy = new plantBaddie("Big Boss Baddie")
   } else {
-    enemy = new plantBaddie("Poison Puff")
+    let randomEnemy = shuffle(4)
+    if (randomEnemy === 1) {
+      enemy = new plantBaddie("Tangle Vine")
+    } else if (randomEnemy === 2) {
+      enemy = new plantBaddie("Thorn Spitter")
+    } else {
+      enemy = new plantBaddie("Poison Puff")
+    }
   }
 }
 
 function enemyTurn() {
   enemy.attack()
+}
+
+function generateDrops() {
+
+  if (enemy.name === "Big Boss Baddie") {
+
+    console.log(`The ${enemy.name} dropped a rare Calendula plant!`)
+    matsi.inventory.calendula +=1
+
+  } else {
+
+    let dropChance = shuffle (4)
+
+    if (dropChance < 3) {
+      let dropNum = shuffle(4)
+      if (enemy.name === "Tangle Vine") {
+        console.log(`The ${enemy.name} dropped ${dropNum} Tangleball(s).`)
+        matsi.weapon.ammo.tangleballs += dropNum
+      } else if (enemy.name === "Thorn Spitter") {
+        console.log(`The ${enemy.name} dropped ${dropNum} Thornfruit(s).`)
+        matsi.weapon.ammo.thornfruits += dropNum
+      } else {
+        console.log(`The ${enemy.name} dropped ${dropNum} Toxabomb(s).`)
+        matsi.weapon.ammo.toxabombs += dropNum
+      }
+
+    let plantChance = shuffle(4)
+
+    if (plantChance === 3) {
+      console.log(`${enemy.name} dropped a rare Blackberry plant!`)
+      matsi.inventory.blackberry +=1
+    }
+    } else {
+      console.log(`The ${enemy.name} didn't drop anything...`)
+    }
+  }
 }
 
 // Set up story and lastAction var which keeps track of what was just done to determine what can be done next.
@@ -246,6 +299,6 @@ let lastAction = ""
 
 // Let's begin:
 
-console.log("Welcome to the story traveller! Today we are following the young wolfling Matsi. Matsi is on the way to see a good friend, Fern the rabbit. But when Matsi gets to Fern's house, they find that poor Fern is horribly sick. Matsi is quick to take care of their feverish friend. 'Fern please, is there any way I can help you feel better?' Fern tells them that there is a special medicine that can be made with 3 herbs. 'Oh thank you Matsi, if you bring me these three herbs I'll be better in no time!' Fern needs 10 elderberry plants, 10 blackberry plants and 1 calendula plant. Lets head out to the forest to find them! But be cautious, the plants may not be so easy to gather as you'd think...")
+console.log("Welcome to the story traveller! Today we are following the young wolfling Matsi. Matsi is on the way to see a good friend, Fern the rabbit. But when Matsi gets to Fern's house, they find that poor Fern is horribly sick. Matsi is quick to take care of their feverish friend. 'Fern please, is there any way I can help you feel better?' Fern tells them that there is a special medicine that can be made with 3 herbs. 'Oh thank you Matsi, if you bring me these three herbs I'll be better in no time!' Fern needs 5 elderberry plants, 5 blackberry plants and 1 calendula plant. Lets head out to the forest to find them! But be cautious, the plants may not be so easy to gather as you'd think...")
 
 matsi.status()
