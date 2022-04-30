@@ -17,10 +17,6 @@ const shuffle = (num) => {
   return randomNumbers[0]
 }
 
-// function randomNum(max) {
-//   return Math.floor(Math.random() * max) +1;
-// }
-
 //create our Matsi hero object:
 
 const matsi = {
@@ -106,6 +102,7 @@ const matsi = {
       if (chance < 4) {
         console.log("As you are walking you run into an ominous looking plant. It attacks!")
         startFight()
+        disableMainBtns()
       } else if (chance === 4) {
         console.log("You see nothing dangerous in this area, maybe you should forage a little?")
       } else if (chance === 5) {
@@ -129,6 +126,7 @@ const matsi = {
   attack() {
     lastAction = "fight"
 
+
     if (enemy.health > 0) {
       const damage = matsi.weapon.strength;
 
@@ -146,9 +144,11 @@ const matsi = {
 
         console.log(`${matsi.name} eliminated ${enemy.name} and wins ${bonusXP} experience points`);
         
-        this.xp += bonusXP;
+        matsi.xp += bonusXP;
 
         generateDrops()
+
+        enableMainBtns()
 
       }
     } else {
@@ -198,8 +198,12 @@ const matsi = {
   runAway() {
     if (matsi.energy > 50) {
       runChance = shuffle(4)
+      if (runChance = 1) {
+        console.log(`You run from the angry ${enemy.name}! You escape into the forest.`)
+        enableMainBtns()
+      }
     } else {
-      console.log("You are too tired to run away!")
+      console.log("You are too tired to run away! You must stay and fight.")
       enemyTurn()
     }
   }
@@ -257,6 +261,32 @@ function enemyTurn() {
   enemy.attack()
 }
 
+function disableMainBtns() {
+  document.querySelector('#forageBtn').disabled = true
+  document.querySelector('#exploreBtn').disabled = true
+  document.querySelector('#restBtn').disabled = true
+  document.querySelector('#eatBtn').disabled = true
+  document.querySelector('#healBtn').disabled = false
+  document.querySelector('#runBtn').disabled = false
+  document.querySelector('#pebbleBtn').disabled = false
+  document.querySelector('#tangleballBtn').disabled = false
+  document.querySelector('#thornfruitBtn').disabled = false
+  document.querySelector('#toxabombBtn').disabled = false
+}
+
+function enableMainBtns() {
+  document.querySelector('#forageBtn').disabled = false
+  document.querySelector('#exploreBtn').disabled = false
+  document.querySelector('#restBtn').disabled = false
+  document.querySelector('#eatBtn').disabled = false
+  document.querySelector('#healBtn').disabled = true
+  document.querySelector('#runBtn').disabled = true
+  document.querySelector('#pebbleBtn').disabled = true
+  document.querySelector('#tangleballBtn').disabled = true
+  document.querySelector('#thornfruitBtn').disabled = true
+  document.querySelector('#toxabombBtn').disabled = true
+}
+
 function generateDrops() {
 
   if (enemy.name === "Big Boss Baddie") {
@@ -286,9 +316,9 @@ function generateDrops() {
     if (plantChance === 3) {
       console.log(`${enemy.name} dropped a rare Blackberry plant!`)
       matsi.inventory.blackberry +=1
-    }
     } else {
       console.log(`The ${enemy.name} didn't drop anything...`)
+    }
     }
   }
 }
@@ -296,6 +326,28 @@ function generateDrops() {
 // Set up story and lastAction var which keeps track of what was just done to determine what can be done next.
 
 let lastAction = ""
+
+//set main BG image:
+
+//document.body.style.backgroundImage = "url(images/pathToFern.jpg)"
+
+//events:
+
+document.getElementById("forageBtn").addEventListener("click", matsi.forage)
+document.getElementById("exploreBtn").addEventListener("click", matsi.explore)
+document.getElementById("eatBtn").addEventListener("click", matsi.eat)
+document.getElementById("restBtn").addEventListener("click", matsi.rest)
+
+document.getElementById("healBtn").addEventListener("click", matsi.heal)
+document.getElementById("runBtn").addEventListener("click", matsi.runAway)
+document.getElementById("pebbleBtn").addEventListener("click", matsi.attack)
+document.getElementById("tangleballBtn").addEventListener("click", matsi.attack)
+document.getElementById("thornfruitBtn").addEventListener("click", matsi.attack)
+document.getElementById("toxabombBtn").addEventListener("click", matsi.attack)
+
+//attack buttons disabled until fight
+
+enableMainBtns()
 
 // Let's begin:
 

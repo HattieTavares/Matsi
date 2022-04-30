@@ -27,7 +27,6 @@ html {
     display: flex;
     flex-direction: row;
     width: 100%;
-    border: 1px solid purple;
   }
 
   header {
@@ -35,10 +34,9 @@ html {
     height: 10vh;
   }
 
-  footer.section {
-    width: 50%;
-    height: 5vh;
+  footer {
     justify-content: center;
+    height: 5vh;
   }
 
   #container {
@@ -66,10 +64,24 @@ html {
     border: 1px solid white;
   }
 
+  #textBg {
+    background-color: white;
+  }
+
   #gameButtons {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     height: 25%;
     border: 1px solid salmon;
+  }
+
+  #mainButtons {
+    width: 50%;
+  }
+
+  #attackButtons {
+    width: 50%;
   }
 
   /* Right side top: Character Status Box */
