@@ -43,70 +43,70 @@ const matsi = {
   },
 
   status() {
-    console.log(`${matsi.name} has ${matsi.health} health, ${matsi.energy} energy, and ${matsi.xp} current xp.`)
+    document.getElementById("story").innerText += `\n${matsi.name} has ${matsi.health} health, ${matsi.energy} energy, and ${matsi.xp} current xp.` + "\n"
   },
 
   rest() {
     if (matsi.energy < 100) {
-      console.log("You lay down in a comfy spot to take a nap")
+      document.getElementById("story").innerText += "\nYou lay down in a comfy spot to take a nap" + "\n"
       if (matsi.energy > 75) {
         matsi.energy = 100
-        console.log("You awake refreshed and full of energy!")
+        document.getElementById("story").innerText += "\nYou awake refreshed and full of energy!" + "\n"
       } else {
         matsi.energy +=25
-        console.log("You're still a little tired, but that was nice.")
+        document.getElementById("story").innerText += "\nYou're still a little tired, but that was nice." + "\n"
       }
     } else {
-      console.log("You found a cozy spot to nap but you're not tired enough to sleep! Let's keep going.")
+      document.getElementById("story").innerText += "\nYou found a cozy spot to nap but you're not tired enough to sleep! Let's keep going." + "\n"
     }
   },
 
   forage() {
     if (lastAction != "forage") {
-      console.log("You stop to look around.")
+      document.getElementById("story").innerText += "\nYou stop to look around." + "\n"
       let chance = shuffle(6)
       if (chance === 1) {
-        console.log("You found some berries.")
+        document.getElementById("story").innerText += "\nYou found some berries." + "\n"
         let addBerries = shuffle(6)
         matsi.inventory.berries += addBerries
-        console.log(`You added ${addBerries} berry(ies) to your inventory.`)
+        document.getElementById("story").innerText += `\nYou added ${addBerries} berry(ies) to your inventory.` + "\n"
       } else if (chance === 2) {
-        console.log("You found some pebbles for your slingshot.")
+        document.getElementById("story").innerText += "\nYou found some pebbles for your slingshot." + "\n"
         let addPebbles = shuffle(6)
         matsi.weapon.ammo.pebbles += addPebbles
-        console.log(`You added ${addPebbles} pebble(s) to your inventory.`)
+        document.getElementById("story").innerText += `\nYou added ${addPebbles} pebble(s) to your inventory.` + "\n"
       } else if (chance === 3) {
-        console.log("You found an elderberry plant!")
+        document.getElementById("story").innerText += "\nYou found an elderberry plant!" + "\n"
         if (matsi.inventory.elderberry < 10) {
-          console.log("You add the plant to  your inventory.")
+          document.getElementById("story").innerText += "\nYou add the plant to  your inventory." + "\n"
           matsi.inventory.elderberry += 1
           if (matsi.inventory.elderberry === 10) {
-            console.log("You found all the elderberry plants you need!")
+            document.getElementById("story").innerText += "\nYou found all the elderberry plants you need!" + "\n"
           }
         }
       } else {
-        console.log("You found nothing...")
+        document.getElementById("story").innerText += "\nYou found nothing..." + "\n"
       }
       lastAction = "forage"
     } else {
-      console.log("You already looked here! There's nothing else...")
+      document.getElementById("story").innerText += "\nYou already looked here! There's nothing else..." + "\n"
     }
   },
 
   explore() {
     lastAction = "explore"
     if (matsi.energy > 0) {
-      console.log("You travel further into the forest.")
+      document.getElementById("story").innerText += "\nYou travel further into the forest." + "\n"
       matsi.energy -=10
       let chance = shuffle(6)
       if (chance < 4) {
-        console.log("As you are walking you run into an ominous looking plant. It attacks!")
+        document.getElementById("story").innerText += "\nAs you are walking you run into an ominous looking plant. It attacks!" + "\n"
         startFight()
         disableMainBtns()
       } else if (chance === 4) {
-        console.log("You see nothing dangerous in this area, maybe you should forage a little?")
+        document.getElementById("story").innerText += "\nYou see nothing dangerous in this area, maybe you should forage a little?" + "\n"
       } else if (chance === 5) {
-        console.log("Enjoying the calming forest atmosphere as you travel, you come upon a sparkling stream, and stop to take a refreshing drink. The water invigorates you.")
+        document.getElementById("story").innerText += "\nEnjoying the calming forest atmosphere as you travel, you come upon a sparkling stream, and stop to take a refreshing drink. The water invigorates you." + "\n"
         if (matsi.energy < 85) {
           matsi.energy += 15
         } else {
@@ -119,7 +119,7 @@ const matsi = {
         }
       }
     } else {
-      console.log("Your legs are too tired to walk anymore, maybe you should rest.")
+      document.getElementById("story").innerText += "\nYour legs are too tired to walk anymore, maybe you should rest." + "\n"
     }
   },
 
@@ -130,19 +130,19 @@ const matsi = {
     if (enemy.health > 0) {
       const damage = matsi.weapon.strength;
 
-      console.log(`${matsi.name} attacks ${enemy.name} and causes ${damage} damage points`);
+      document.getElementById("story").innerText += `\n${matsi.name} attacks ${enemy.name} and causes ${damage} damage points.` + "\n";
 
       enemy.health -= damage;
       
       if (enemy.health > 0) {
-        console.log(`${enemy.name} has ${enemy.health} health points left`);
+        document.getElementById("story").innerText += `\n${enemy.name} has ${enemy.health} health points left.` + "\n";
         enemyTurn()
       } else {
         enemy.health = 0;
 
         const bonusXP = 10;
 
-        console.log(`${matsi.name} eliminated ${enemy.name} and wins ${bonusXP} experience points`);
+        document.getElementById("story").innerText += `\n${matsi.name} eliminated ${enemy.name} and wins ${bonusXP} experience points.` + "\n";
         
         matsi.xp += bonusXP;
 
@@ -152,7 +152,7 @@ const matsi = {
 
       }
     } else {
-      console.log(`${matsi.name} can't attack (they've been eliminated)`);
+      document.getElementById("story").innerText += `\n${matsi.name} can't attack (they've been eliminated).` + "\n";
       }
   },
 
@@ -160,17 +160,17 @@ const matsi = {
 
   eat() {
     if (matsi.health < 100) {
-      console.log("You eat a berry.")
+      document.getElementById("story").innerText += "\nYou eat a berry." + "\n"
       matsi.inventory.berries -= 1
       if (matsi.health > 90) {
         matsi.health = 100
-        console.log("The berry heals you to full health")
+        document.getElementById("story").innerText += "\nThe berry heals you to full health" + "\n"
       } else {
         matsi.health += 10
-        console.log("The berry heals 10 health points.")
+        document.getElementById("story").innerText += "\nThe berry heals 10 health points." + "\n"
       }
     } else {
-      console.log("You aren't hungry right now...")
+      document.getElementById("story").innerText += "\nYou aren't hungry right now..." + "\n"
     }
   },
 
@@ -178,18 +178,18 @@ const matsi = {
   
   heal() {
     if (matsi.health < 100) {
-      console.log("You eat a berry.")
+      document.getElementById("story").innerText += "\nYou eat a berry." + "\n"
       matsi.inventory.berries -= 1
       if (matsi.health > 90) {
         matsi.health = 100
-        console.log("The berry heals you to full health")
+        document.getElementById("story").innerText += "\nThe berry heals you to full health" + "\n"
       } else {
         matsi.health += 10
-        console.log("The berry heals 10 health points.")
+        document.getElementById("story").innerText += "\nThe berry heals 10 health points." + "\n"
       }
       enemyTurn()
     } else {
-      console.log("You aren't hungry right now...")
+      document.getElementById("story").innerText += "\nYou aren't hungry right now..." + "\n"
     }
   },
 
@@ -199,11 +199,11 @@ const matsi = {
     if (matsi.energy > 50) {
       runChance = shuffle(4)
       if (runChance = 1) {
-        console.log(`You run from the angry ${enemy.name}! You escape into the forest.`)
+        document.getElementById("story").innerText += `\nYou run from the angry ${enemy.name}! You escape into the forest.` + "\n"
         enableMainBtns()
       }
     } else {
-      console.log("You are too tired to run away! You must stay and fight.")
+      document.getElementById("story").innerText += "\nYou are too tired to run away! You must stay and fight." + "\n"
       enemyTurn()
     }
   }
@@ -224,18 +224,18 @@ class plantBaddie  {
       if (this.health > 0) {
         const baddieDamage = this.strength;
 
-        console.log(`${this.name} attacks ${matsi.name} and causes ${baddieDamage} damage`);
+        document.getElementById("story").innerText += `\n${this.name} attacks ${matsi.name} and causes ${baddieDamage} damage.` + "\n";
 
         matsi.health -= baddieDamage;
         
         if (matsi.health > 0) {
-          console.log(`${matsi.name} has ${matsi.health} health points left`);
+          document.getElementById("story").innerText += `\n${matsi.name} has ${matsi.health} health points left.` + "\n";
         } else {
           matsi.health = 0;
-          console.log(`${this.name} has eliminated ${matsi.name}`);
+          document.getElementById("story").innerText += `\n${this.name} has eliminated ${matsi.name}.` + "\n";
         }
       } else {
-        console.log(`${this.name} can't attack (they've been eliminated)`);
+        document.getElementById("story").innerText += `\n${this.name} can't attack (they've been eliminated).` + "\n";
         }
     }
 }
@@ -291,7 +291,7 @@ function generateDrops() {
 
   if (enemy.name === "Big Boss Baddie") {
 
-    console.log(`The ${enemy.name} dropped a rare Calendula plant!`)
+    document.getElementById("story").innerText += `The ${enemy.name} dropped a rare Calendula plant!` + "\n"
     matsi.inventory.calendula +=1
 
   } else {
@@ -301,23 +301,23 @@ function generateDrops() {
     if (dropChance < 3) {
       let dropNum = shuffle(4)
       if (enemy.name === "Tangle Vine") {
-        console.log(`The ${enemy.name} dropped ${dropNum} Tangleball(s).`)
+        document.getElementById("story").innerText += `\nThe ${enemy.name} dropped ${dropNum} Tangleball(s).` + "\n"
         matsi.weapon.ammo.tangleballs += dropNum
       } else if (enemy.name === "Thorn Spitter") {
-        console.log(`The ${enemy.name} dropped ${dropNum} Thornfruit(s).`)
+        document.getElementById("story").innerText += `\nThe ${enemy.name} dropped ${dropNum} Thornfruit(s).` + "\n"
         matsi.weapon.ammo.thornfruits += dropNum
       } else {
-        console.log(`The ${enemy.name} dropped ${dropNum} Toxabomb(s).`)
+        document.getElementById("story").innerText += `\nThe ${enemy.name} dropped ${dropNum} Toxabomb(s).` + "\n"
         matsi.weapon.ammo.toxabombs += dropNum
       }
 
     let plantChance = shuffle(4)
 
     if (plantChance === 3) {
-      console.log(`${enemy.name} dropped a rare Blackberry plant!`)
+      document.getElementById("story").innerText += `\n${enemy.name} dropped a rare Blackberry plant!` + "\n"
       matsi.inventory.blackberry +=1
     } else {
-      console.log(`The ${enemy.name} didn't drop anything...`)
+      document.getElementById("story").innerText += `\nThe ${enemy.name} didn't drop anything...` + "\n"
     }
     }
   }
@@ -351,6 +351,6 @@ enableMainBtns()
 
 // Let's begin:
 
-console.log("Welcome to the story traveller! Today we are following the young wolfling Matsi. Matsi is on the way to see a good friend, Fern the rabbit. But when Matsi gets to Fern's house, they find that poor Fern is horribly sick. Matsi is quick to take care of their feverish friend. 'Fern please, is there any way I can help you feel better?' Fern tells them that there is a special medicine that can be made with 3 herbs. 'Oh thank you Matsi, if you bring me these three herbs I'll be better in no time!' Fern needs 5 elderberry plants, 5 blackberry plants and 1 calendula plant. Lets head out to the forest to find them! But be cautious, the plants may not be so easy to gather as you'd think...")
+document.getElementById("story").innerText = "Welcome to the story traveller! Today we are following the young wolfling Matsi. Matsi is on the way to see a good friend, Fern the rabbit. But when Matsi gets to Fern's house, they find that poor Fern is horribly sick. Matsi is quick to take care of their feverish friend. 'Fern please, is there any way I can help you feel better?' Fern tells them that there is a special medicine that can be made with 3 herbs. 'Oh thank you Matsi, if you bring me these three herbs I'll be better in no time!' Fern needs 5 elderberry plants, 5 blackberry plants and 1 calendula plant. Lets head out to the forest to find them! But be cautious, the plants may not be so easy to gather as you'd think..." + "\n"
 
 matsi.status()
