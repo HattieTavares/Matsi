@@ -2,6 +2,7 @@
 
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
   }
   
   *, *:before, *:after {
@@ -19,7 +20,10 @@ html {
     justify-content: center;
     min-height:100vh;
     text-align: center;
-    background-color: #2aac69;
+    background-color: #adb4cb;
+    background-image: url("images/bgv2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   /* Start ID styles */
@@ -37,11 +41,13 @@ html {
 
   h1 {
     font-family: 'Amatic SC', cursive;
+    font-size: 3.5rem;
   }
 
   footer {
     justify-content: center;
     height: 5vh;
+    font-size: 1.5rem;
   }
 
   #container {
@@ -50,37 +56,76 @@ html {
     height: 85vh;
     flex-direction: row;
     justify-content: center;
-    border: 1px solid black;
   }
 
-  /* Left side: Main game text and game buttons */
+  /* Left side: Main game status, text, and game buttons */
+  #charStats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 25%;
+    height: 100%;
+  }
+
+  #stats {
+    height: 40%;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    flex-direction: column-reverse;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+    background-color: rgb(228 228 228 / 5%); 
+  }
+
+  #charPic {
+    height: 60%;
+    width: 100;
+    padding: 0px;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+  }
 
   #mainGame {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    width: 60%;
+    padding: 10px;
+    width: 50%;
   }
 
   #gameText {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     height: 75%;
-    border: 1px solid white;
   }
 
   #textBg {
+    padding: 10px;
+    border-radius: 10px;
     text-align: left;
+    font-size: 1.5rem;
     width: 100%;
     height: 100%;
     padding: 10px;
     overflow-y: auto;
     display: flex;
     flex-direction: column-reverse;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+    background-color: rgb(228 228 228 / 5%); 
   }
 
   #gameButtons {
     display: flex;
     flex-direction: row;
+    padding: 10px;
     width: 100%;
     height: 25%;
   }
@@ -93,43 +138,54 @@ html {
     width: 50%;
   }
 
-  /* Right side top: Character Status Box */
-
-  #status {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    width: 40%;
+  .btn {
+    border: none;
+    border-radius: 10px;
+    width: 125px;
+    height: 40px;
+    background-color: #4387b8;
+    /*box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%); */
   }
 
   /* Right side bottom: Character Inventory and Weapon Stats */
 
-  #stats {
-    padding: 2px;
-    width: 100%;
-    height: 50%;
-    border: 1px solid white;
-  }
-
   #stuff {
-    padding: 2px;
+    padding: 10px;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 50%;
-    border: 1px solid white;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    height: 100%;
   }
 
   #inventory {
-    padding: 2px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 90%;
+    height: 45%;
+    border-radius: 10px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+    background-color: rgb(228 228 228 / 5%);
   }
 
   #weapon {
-    padding: 2px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 90%;
+    height: 45%;
+    border-radius: 10px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+    background-color: rgb(228 228 228 / 5%);
+  }
+
+  .statBars {
+    display: flex;
+    flex-direction: row;
   }

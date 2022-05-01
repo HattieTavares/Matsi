@@ -25,7 +25,7 @@ const matsi = {
   health: 100,
   energy: 100,
   inventory: {
-    berries: 8,
+    berries: 5,
     elderberry: 0,
     blackberry: 0,
     calendula: 0,
@@ -69,11 +69,13 @@ const matsi = {
         document.getElementById("story").innerText += "\nYou found some berries." + "\n"
         let addBerries = shuffle(6)
         matsi.inventory.berries += addBerries
+        document.getElementById("berry").innerText = matsi.inventory.berries
         document.getElementById("story").innerText += `\nYou added ${addBerries} berry(ies) to your inventory.` + "\n"
       } else if (chance === 2) {
         document.getElementById("story").innerText += "\nYou found some pebbles for your slingshot." + "\n"
         let addPebbles = shuffle(6)
         matsi.weapon.ammo.pebbles += addPebbles
+        document.getElementById("ammo1").innerText = matsi.weapon.ammo.pebbles
         document.getElementById("story").innerText += `\nYou added ${addPebbles} pebble(s) to your inventory.` + "\n"
       } else if (chance === 3) {
         document.getElementById("story").innerText += "\nYou found an elderberry plant!" + "\n"
@@ -327,10 +329,6 @@ function generateDrops() {
 
 let lastAction = ""
 
-//set main BG image:
-
-//document.body.style.backgroundImage = "url(images/pathToFern.jpg)"
-
 //events:
 
 document.getElementById("forageBtn").addEventListener("click", matsi.forage)
@@ -348,6 +346,22 @@ document.getElementById("toxabombBtn").addEventListener("click", matsi.attack)
 //attack buttons disabled until fight
 
 enableMainBtns()
+
+//stats load
+
+document.getElementById("health").innerText = matsi.health
+document.getElementById("energy").innerText = matsi.energy
+document.getElementById("exp").innerText = matsi.xp
+
+document.getElementById("berry").innerText = matsi.inventory.berries
+document.getElementById("eBerry").innerText = matsi.inventory.elderberry
+document.getElementById("bBerry").innerText = matsi.inventory.blackberry
+document.getElementById("calendula").innerText = matsi.inventory.calendula
+
+document.getElementById("ammo1").innerText = matsi.weapon.ammo.pebbles
+document.getElementById("ammo2").innerText = matsi.weapon.ammo.tangleballs
+document.getElementById("ammo3").innerText = matsi.weapon.ammo.thornfruits
+document.getElementById("ammo4").innerText = matsi.weapon.ammo.toxabombs
 
 // Let's begin:
 

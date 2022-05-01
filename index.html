@@ -21,6 +21,31 @@
     </header>
 
     <section id="container">
+        
+        <section id="charStats">
+            <section id="stats">
+
+                <h2>Stats:</h2>
+                <section class="statBars">
+                    <i class="fa-solid fa-kit-medical"></i><h3>Health: </h3><span id="health"></span>
+                </section>
+    
+                <section class="statBars">
+                    <i class="fa-solid fa-bolt"></i><h3>Energy: <h3><span id="energy"></span>
+                </section>
+    
+                <section class="statBars">
+                    <i class="fa-solid fa-circle-up"></i><h3>XP: </h3><span id="exp"></span>
+                </section>
+            
+            </section>
+
+            <section id="charPic">
+                <img src="images/matsi.png" alt="">
+            </section>
+
+        </section>
+
 
         <section id="mainGame">
 
@@ -35,59 +60,69 @@
             <section id="gameButtons">
 
                 <section id="mainButtons">
-                    <button id="forageBtn">Forage</button>
-                    <button id="exploreBtn">Explore</button>
-                    <button id="eatBtn">Eat</button>
-                    <button id="restBtn">Rest</button>
+                    <button id="forageBtn" class="btn">Forage</button>
+                    <button id="exploreBtn" class="btn">Explore</button>
+                    <button id="eatBtn" class="btn">Eat</button>
+                    <button id="restBtn" class="btn">Rest</button>
                 </section>
 
                 <section id="attackButtons">
-                    <button id="healBtn">Heal</button>
-                    <button id="runBtn">Run</button>
-                    <button id="pebbleBtn">Pebble</button>
-                    <button id="tangleballBtn">Tangleball</button>
-                    <button id="thornfruitBtn">Thornfruit</button>
-                    <button id="toxabombBtn">Toxabomb</button>
+                    <button id="healBtn" class="btn">Heal</button>
+                    <button id="runBtn" class="btn">Run</button>
+                    <button id="pebbleBtn" class="btn">Pebble</button>
+                    <button id="tangleballBtn" class="btn">Tangleball</button>
+                    <button id="thornfruitBtn" class="btn">Thornfruit</button>
+                    <button id="toxabombBtn" class="btn">Toxabomb</button>
                 </section>
 
             </section>
 
         </section>
 
-        <section id="status">
+        <section id="stuff">
 
-            <section id="stats">
+            <section id="inventory">
 
-                <h2>Stats:</h2>
-                <i class="fa-solid fa-kit-medical"></i><h3>Health:</h3>
-                <i class="fa-solid fa-bolt"></i><h3>Energy:<h3>
-                <i class="fa-solid fa-circle-up"></i><h3>XP:</h3>
+                <h3>Inventory:</h3>
+
+                <section class="statBars">
+                    <h4>Berries: </h4><span id="berry"></span>
+                </section>
+
+                <section class="statBars">
+                    <h4>Elderberry: </h4><span id="eBerry"></span>
+                </section>
+
+                <section class="statBars">
+                    <h4>Blackberry: </h4><span id="bBerry"></span>
+                </section>
+
+                <section class="statBars">
+                    <h4>Calendula: </h4><span id="calendula"></span>
+                </section>
 
             </section>
 
-            <section id="stuff">
+            <section id="weapon">
 
-                <section id="inventory">
+                <h3>Weapon: Slingshot</h3>
 
-                    <h3>Inventory:</h3>
-                    <h4>Berries:</h4>
-                    <h4>Elderberry:</h4>
-                    <h4>Blackberry:</h4>
-                    <h4>Calendula:</h4>
-
+                <section class="statBars">
+                    <h4>Pebbles: </h4><span id="ammo1"></span>
                 </section>
 
-                <section id="weapon">
-
-                    <h3>Weapon:</h3>
-                    <h4>Slingshot</h4>
-                    <h4>Pebbles:</h4>
-                    <h4>Tangleballs:</h4>
-                    <h4>Thornfruits:</h4>
-                    <h4>Toxabombs</h4>
-
+                <section class="statBars">
+                    <h4>Tangleballs: </h4><span id="ammo2"></span>
                 </section>
 
+                <section class="statBars">
+                    <h4>Thornfruits: </h4><span id="ammo3"></span>
+                </section>
+
+                <section class="statBars">
+                    <h4>Toxabombs: </h4><span id="ammo4"></span>
+                </section>
+                
             </section>
 
         </section>
