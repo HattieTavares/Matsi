@@ -59,6 +59,7 @@ const matsi = {
     } else {
       document.getElementById("story").innerText += "\nYou found a cozy spot to nap but you're not tired enough to sleep! Let's keep going." + "\n"
     }
+    document.getElementById("energy").innerText = matsi.energy
   },
 
   forage() {
@@ -100,6 +101,7 @@ const matsi = {
     if (matsi.energy > 0) {
       document.getElementById("story").innerText += "\nYou travel further into the forest." + "\n"
       matsi.energy -=10
+      document.getElementById("energy").innerText = matsi.energy
       let chance = shuffle(6)
       if (chance < 4) {
         document.getElementById("story").innerText += "\nAs you are walking you run into an ominous looking plant. It attacks!" + "\n"
@@ -119,6 +121,8 @@ const matsi = {
         } else {
           matsi.health = 100
         }
+        document.getElementById("health").innerText = matsi.health
+        document.getElementById("energy").innerText = matsi.energy
       }
     } else {
       document.getElementById("story").innerText += "\nYour legs are too tired to walk anymore, maybe you should rest." + "\n"
@@ -147,6 +151,7 @@ const matsi = {
         document.getElementById("story").innerText += `\n${matsi.name} eliminated ${enemy.name} and wins ${bonusXP} experience points.` + "\n";
         
         matsi.xp += bonusXP;
+        document.getElementById("exp").innerText = matsi.xp
 
         generateDrops()
 
@@ -164,11 +169,14 @@ const matsi = {
     if (matsi.health < 100) {
       document.getElementById("story").innerText += "\nYou eat a berry." + "\n"
       matsi.inventory.berries -= 1
+      document.getElementById("berry").innerText = matsi.inventory.berries
       if (matsi.health > 90) {
         matsi.health = 100
+        document.getElementById("health").innerText = matsi.health
         document.getElementById("story").innerText += "\nThe berry heals you to full health" + "\n"
       } else {
         matsi.health += 10
+        document.getElementById("health").innerText = matsi.health
         document.getElementById("story").innerText += "\nThe berry heals 10 health points." + "\n"
       }
     } else {
@@ -182,11 +190,14 @@ const matsi = {
     if (matsi.health < 100) {
       document.getElementById("story").innerText += "\nYou eat a berry." + "\n"
       matsi.inventory.berries -= 1
+      document.getElementById("berry").innerText = matsi.inventory.berries
       if (matsi.health > 90) {
         matsi.health = 100
+        document.getElementById("health").innerText = matsi.healthberries
         document.getElementById("story").innerText += "\nThe berry heals you to full health" + "\n"
       } else {
         matsi.health += 10
+        document.getElementById("health").innerText = matsi.healthberries
         document.getElementById("story").innerText += "\nThe berry heals 10 health points." + "\n"
       }
       enemyTurn()
@@ -230,10 +241,13 @@ class plantBaddie  {
 
         matsi.health -= baddieDamage;
         
+        
+        
         if (matsi.health > 0) {
           document.getElementById("story").innerText += `\n${matsi.name} has ${matsi.health} health points left.` + "\n";
         } else {
           matsi.health = 0;
+          document.getElementById("health").innerText = matsi.health
           document.getElementById("story").innerText += `\n${this.name} has eliminated ${matsi.name}.` + "\n";
         }
       } else {
@@ -295,6 +309,7 @@ function generateDrops() {
 
     document.getElementById("story").innerText += `The ${enemy.name} dropped a rare Calendula plant!` + "\n"
     matsi.inventory.calendula +=1
+    document.getElementById("calendula").innerText = matsi.inventory.calendula
 
   } else {
 
@@ -305,12 +320,15 @@ function generateDrops() {
       if (enemy.name === "Tangle Vine") {
         document.getElementById("story").innerText += `\nThe ${enemy.name} dropped ${dropNum} Tangleball(s).` + "\n"
         matsi.weapon.ammo.tangleballs += dropNum
+        document.getElementById("ammo2").innerText = matsi.weapon.ammo.tangleballs
       } else if (enemy.name === "Thorn Spitter") {
         document.getElementById("story").innerText += `\nThe ${enemy.name} dropped ${dropNum} Thornfruit(s).` + "\n"
         matsi.weapon.ammo.thornfruits += dropNum
+        document.getElementById("ammo3").innerText = matsi.weapon.ammo.thornfruits
       } else {
         document.getElementById("story").innerText += `\nThe ${enemy.name} dropped ${dropNum} Toxabomb(s).` + "\n"
         matsi.weapon.ammo.toxabombs += dropNum
+        document.getElementById("ammo4").innerText = matsi.weapon.ammo.toxabombs
       }
 
     let plantChance = shuffle(4)
@@ -318,6 +336,7 @@ function generateDrops() {
     if (plantChance === 3) {
       document.getElementById("story").innerText += `\n${enemy.name} dropped a rare Blackberry plant!` + "\n"
       matsi.inventory.blackberry +=1
+      document.getElementById("bBerry").innerText = matsi.inventory.blackberry
     } else {
       document.getElementById("story").innerText += `\nThe ${enemy.name} didn't drop anything...` + "\n"
     }
@@ -365,6 +384,4 @@ document.getElementById("ammo4").innerText = matsi.weapon.ammo.toxabombs
 
 // Let's begin:
 
-document.getElementById("story").innerText = "Welcome to the story traveller! Today we are following the young wolfling Matsi. Matsi is on the way to see a good friend, Fern the rabbit. But when Matsi gets to Fern's house, they find that poor Fern is horribly sick. Matsi is quick to take care of their feverish friend. 'Fern please, is there any way I can help you feel better?' Fern tells them that there is a special medicine that can be made with 3 herbs. 'Oh thank you Matsi, if you bring me these three herbs I'll be better in no time!' Fern needs 5 elderberry plants, 5 blackberry plants and 1 calendula plant. Lets head out to the forest to find them! But be cautious, the plants may not be so easy to gather as you'd think..." + "\n"
-
-matsi.status()
+document.getElementById("story").innerText = "Welcome to the story traveller! \n\nToday we are following the young wolfling Matsi. Matsi is on the way to see a good friend, Fern the rabbit. But when Matsi gets to Fern's house, they find that poor Fern is horribly sick. Matsi is quick to take care of their feverish friend. \n\n'Fern please, is there any way I can help you feel better?' \n\nFern tells Matsi that there is a special medicine that can be made with 3 herbs. \n\n'Oh thank you Matsi, if you bring me these three herbs I'll be better in no time!' \n\nFern needs 5 elderberry plants, 5 blackberry plants and 1 calendula plant. Lets head out to the forest to find them! But be cautious, the plants may not be so easy to gather as you'd think..." + "\n"
