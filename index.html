@@ -26,16 +26,19 @@
             <section id="stats">
 
                 <h2>Stats:</h2>
+
+                <hr>
+
                 <section class="statBars">
-                    <h3><i class="fa-solid fa-kit-medical"></i> Health: <span id="health"></span></h3>
+                    <p class="statInfo"><i class="fa-solid fa-kit-medical"></i> Health: <span id="health"></span></p>
                 </section>
     
                 <section class="statBars">
-                    <h3><i class="fa-solid fa-bolt"></i> Energy: <span id="energy"></span></h3>
+                    <p class="statInfo"><i class="fa-solid fa-bolt"></i> Energy: <span id="energy"></span></p>
                 </section>
     
                 <section class="statBars">
-                    <h3><i class="fa-solid fa-circle-up"></i> XP: <span id="exp"></span></h3>
+                    <p class="statInfo"><i class="fa-solid fa-circle-up"></i> XP: <span id="exp"></span></p>
                 </section>
             
             </section>
@@ -60,20 +63,28 @@
             <section id="gameButtons">
 
                 <section id="mainButtons">
-                    <button id="forageBtn" class="btn">Forage</button>
-                    <button id="exploreBtn" class="btn">Explore</button>
-                    <button id="eatBtn" class="btn">Eat</button>
-                    <button id="restBtn" class="btn">Rest</button>
+                    <button id="forageBtn" class="btn hidden">Forage</button>
+                    <button id="exploreBtn" class="btn hidden">Explore</button>
+                    <button id="eatBtn" class="btn hidden">Eat</button>
+                    <button id="restBtn" class="btn hidden">Rest</button>
+                    <button id="yesBtn" class="btn hidden">Yes</button>
+                    <button id="noBtn" class="btn hidden">No</button>
+                    <button id="pebbleBtn" class="btn hidden">Pebble</button>
+                    <button id="tangleballBtn" class="btn hidden">Tangleball</button>
+                    <button id="thornfruitBtn" class="btn hidden">Thornfruit</button>
+                    <button id="toxabombBtn" class="btn hidden">Toxabomb</button>
+                    <button id="healBtn" class="btn hidden">Heal</button>
+                    <button id="runBtn" class="btn hidden">Run</button>
                 </section>
 
-                <section id="attackButtons">
-                    <button id="healBtn" class="btn">Heal</button>
-                    <button id="runBtn" class="btn">Run</button>
-                    <button id="pebbleBtn" class="btn">Pebble</button>
-                    <button id="tangleballBtn" class="btn">Tangleball</button>
-                    <button id="thornfruitBtn" class="btn">Thornfruit</button>
-                    <button id="toxabombBtn" class="btn">Toxabomb</button>
-                </section>
+                <!-- <section id="attackButtons">
+                    <button id="healBtn" class="btn hidden">Heal</button>
+                    <button id="runBtn" class="btn hidden">Run</button>
+                    <button id="pebbleBtn" class="btn hidden">Pebble</button>
+                    <button id="tangleballBtn" class="btn hidden">Tangleball</button>
+                    <button id="thornfruitBtn" class="btn hidden">Thornfruit</button>
+                    <button id="toxabombBtn" class="btn hidden">Toxabomb</button>
+                </section> -->
 
             </section>
 
@@ -83,22 +94,24 @@
 
             <section id="inventory">
 
-                <h3>Inventory:</h3>
+                <h3>Inventory: </h3>
+
+                <hr>
 
                 <section class="statBars">
-                    <h4>Berries: <span id="berry"></span></h4>
+                    <p class="statInfo">Berries: <span id="berry"></span></p>
                 </section>
 
                 <section class="statBars">
-                    <h4>Elderberry: <span id="eBerry"></span></h4>
+                    <p class="statInfo">Elderberry: <span id="eBerry"></span></p>
                 </section>
 
                 <section class="statBars">
-                    <h4>Blackberry: <span id="bBerry"></span></h4>
+                    <p class="statInfo">Blackberry: <span id="bBerry"></span></p>
                 </section>
 
                 <section class="statBars">
-                    <h4>Calendula: <span id="calendula"></span></h4>
+                    <p class="statInfo">Calendula: <span id="calendula"></span></p>
                 </section>
 
             </section>
@@ -107,20 +120,22 @@
 
                 <h3>Weapon: Slingshot</h3>
 
+                <hr>
+
                 <section class="statBars">
-                    <h4>Pebbles: <span id="ammo1"></span></h4>
+                    <p class="statInfo">Pebbles: <span id="ammo1"></span></p>
                 </section>
 
                 <section class="statBars">
-                    <h4>Tangleballs: <span id="ammo2"></span></h4>
+                    <p class="statInfo">Tangleballs: <span id="ammo2"></span></p>
                 </section>
 
                 <section class="statBars">
-                    <h4>Thornfruits: <span id="ammo3"></span></h4>
+                    <p class="statInfo">Thornfruits: <span id="ammo3"></span></p>
                 </section>
 
                 <section class="statBars">
-                    <h4>Toxabombs: <span id="ammo4"></span></h4>
+                    <p class="statInfo">Toxabombs: <span id="ammo4"></span></p>
                 </section>
                 
             </section>

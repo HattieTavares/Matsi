@@ -26,6 +26,10 @@ html {
     background-repeat: no-repeat;
   }
 
+  .hidden {
+    display: none;
+  }
+
   /* Start ID styles */
 
   #header, #footer{
@@ -42,6 +46,31 @@ html {
   h1 {
     font-family: 'Amatic SC', cursive;
     font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  hr {
+    width: 75%;
+    height: 1px;
+    border: none;
+    background-image: linear-gradient(to right, rgba(0,0,0,0), black, rgba(0,0,0,0));
+  }
+
+  .statInfo {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   footer {
@@ -72,9 +101,11 @@ html {
   #stats {
     height: 35%;
     width: 90%;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
-    flex-direction: column-reverse;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
@@ -132,18 +163,26 @@ html {
   #gameButtons {
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    justify-content: center;
+    padding: 5px;
     width: 100%;
     height: 25%;
   }
 
   #mainButtons {
-    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 75%;
   }
 
-  #attackButtons {
+  /*#attackButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     width: 50%;
-  }
+  } */
 
   .btn {
     border: 1px solid #8eb7d4;
@@ -152,9 +191,11 @@ html {
     width: 125px;
     height: 40px;
     background-color: #8eb7d4;
+    margin-bottom: 5px;
   }
 
   .btn:hover {
+    color: white;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
@@ -173,23 +214,11 @@ html {
     height: 100%;
   }
 
-  #inventory {
-    padding: 10px;
+  #inventory, #weapon {
+    padding: 5px;
     display: flex;
     flex-direction: column;
-    width: 90%;
-    height: 45%;
-    border-radius: 10px;
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
-    background-color: rgb(228 228 228 / 5%);
-  }
-
-  #weapon {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     width: 90%;
     height: 45%;
     border-radius: 10px;

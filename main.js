@@ -278,30 +278,64 @@ function enemyTurn() {
 }
 
 function disableMainBtns() {
-  document.querySelector('#forageBtn').disabled = true
-  document.querySelector('#exploreBtn').disabled = true
-  document.querySelector('#restBtn').disabled = true
-  document.querySelector('#eatBtn').disabled = true
-  document.querySelector('#healBtn').disabled = false
-  document.querySelector('#runBtn').disabled = false
-  document.querySelector('#pebbleBtn').disabled = false
-  document.querySelector('#tangleballBtn').disabled = false
-  document.querySelector('#thornfruitBtn').disabled = false
-  document.querySelector('#toxabombBtn').disabled = false
+  document.querySelector('#forageBtn').classList.add("hidden")
+  document.querySelector('#exploreBtn').classList.add("hidden")
+  document.querySelector('#restBtn').classList.add("hidden")
+  document.querySelector('#eatBtn').classList.add("hidden")
+  document.querySelector('#yesBtn').classList.add("hidden")
+  document.querySelector('#noBtn').classList.add("hidden")
+  document.querySelector('#pebbleBtn').classList.toggle("hidden")
+  document.querySelector('#tangleballBtn').classList.toggle("hidden")
+  document.querySelector('#thornfruitBtn').classList.toggle("hidden")
+  document.querySelector('#toxabombBtn').classList.toggle("hidden")
+  document.querySelector('#healBtn').classList.toggle("hidden")
+  document.querySelector('#runBtn').classList.toggle("hidden")
 }
 
 function enableMainBtns() {
-  document.querySelector('#forageBtn').disabled = false
-  document.querySelector('#exploreBtn').disabled = false
-  document.querySelector('#restBtn').disabled = false
-  document.querySelector('#eatBtn').disabled = false
-  document.querySelector('#healBtn').disabled = true
-  document.querySelector('#runBtn').disabled = true
-  document.querySelector('#pebbleBtn').disabled = true
-  document.querySelector('#tangleballBtn').disabled = true
-  document.querySelector('#thornfruitBtn').disabled = true
-  document.querySelector('#toxabombBtn').disabled = true
+  document.querySelector('#forageBtn').classList.toggle("hidden")
+  document.querySelector('#exploreBtn').classList.toggle("hidden")
+  document.querySelector('#restBtn').classList.toggle("hidden")
+  document.querySelector('#eatBtn').classList.toggle("hidden")
+  document.querySelector('#yesBtn').classList.toggle("hidden")
+  document.querySelector('#noBtn').classList.toggle("hidden")
+  document.querySelector('#pebbleBtn').classList.add("hidden")
+  document.querySelector('#tangleballBtn').classList.add("hidden")
+  document.querySelector('#thornfruitBtn').classList.add("hidden")
+  document.querySelector('#toxabombBtn').classList.add("hidden")
+  document.querySelector('#healBtn').classList.add("hidden")
+  document.querySelector('#runBtn').classList.add("hidden")
 }
+
+// function disableMainBtns() {
+//   document.querySelector('#forageBtn').disabled = true
+//   document.querySelector('#exploreBtn').disabled = true
+//   document.querySelector('#restBtn').disabled = true
+//   document.querySelector('#eatBtn').disabled = true
+//   document.querySelector('#yesBtn').disabled = true
+//   document.querySelector('#noBtn').disabled = true
+//   document.querySelector('#healBtn').disabled = false
+//   document.querySelector('#runBtn').disabled = false
+//   document.querySelector('#pebbleBtn').disabled = false
+//   document.querySelector('#tangleballBtn').disabled = false
+//   document.querySelector('#thornfruitBtn').disabled = false
+//   document.querySelector('#toxabombBtn').disabled = false
+// }
+
+// function enableMainBtns() {
+//   document.querySelector('#forageBtn').disabled = false
+//   document.querySelector('#exploreBtn').disabled = false
+//   document.querySelector('#restBtn').disabled = false
+//   document.querySelector('#eatBtn').disabled = false
+//   document.querySelector('#yesBtn').disabled = false
+//   document.querySelector('#noBtn').disabled = false
+//   document.querySelector('#healBtn').disabled = true
+//   document.querySelector('#runBtn').disabled = true
+//   document.querySelector('#pebbleBtn').disabled = true
+//   document.querySelector('#tangleballBtn').disabled = true
+//   document.querySelector('#thornfruitBtn').disabled = true
+//   document.querySelector('#toxabombBtn').disabled = true
+// }
 
 function generateDrops() {
 
