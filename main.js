@@ -102,7 +102,7 @@ const matsi = {
       document.getElementById("story").innerText += "\nYou travel further into the forest." + "\n"
       matsi.energy -=10
       document.getElementById("energy").innerText = matsi.energy
-      let chance = shuffle(6)
+      let chance = shuffle(7)
       if (chance < 4) {
         document.getElementById("story").innerText += "\nAs you are walking you run into an ominous looking plant. It attacks!" + "\n"
         startFight()
@@ -123,6 +123,25 @@ const matsi = {
         }
         document.getElementById("health").innerText = matsi.health
         document.getElementById("energy").innerText = matsi.energy
+      } else if (chance === 6) {
+        document.getElementById("story").innerText += "\nThe wind begins blow and you see clouds heavy with rain ahead. Do you shelter from the storm or push on in your quest? \nChoose 'Yes' to shelter or 'No' to continue."
+        if (document.getElementById("yesBtn").clicked === true) {
+          document.getElementById("story").innerText += "\nYou decide to take shelter under a thick canopy of trees and wait for the storm to pass."
+        } else if (document.getElementById("noBtn").clicked === true) {
+          let numChance = shuffle(4)
+          if (numChance === 1) {
+            document.getElementById("story").innerText += "\nAs you travel, the temperature drops, and you shiver in the cold. You can feel your energy being drained."
+            matsi.energy -= 10
+            matsi.health -=10
+          } else if (numChance === 2) {
+            document.getElementById("story").innerText += "\nThe rain pelts your face and body as you squint to see in front of you. You slip on a rock covered in moss and fall into a bush. Some items fall out of your bag."
+            //loseItems()
+          } else {
+            document.getElementById("story").innerText += "\nAlthough the storm is fierce, you make your way safely along the path until finally it passes and the sun emerges again to warm you."
+          }
+        } else {
+          alert("Please click yes or no.")
+        }
       }
     } else {
       document.getElementById("story").innerText += "\nYour legs are too tired to walk anymore, maybe you should rest." + "\n"
@@ -221,6 +240,12 @@ const matsi = {
     }
   }
 }
+
+// loseItems() {
+//   Object.keys(matsi.inventory).forEach(key => {
+//     matsi.inventory[key] -= 1;
+//   })
+// }
 
 // Create plant Baddie factory:
 
