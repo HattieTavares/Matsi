@@ -241,12 +241,6 @@ const matsi = {
   }
 }
 
-// loseItems() {
-//   Object.keys(matsi.inventory).forEach(key => {
-//     matsi.inventory[key] -= 1;
-//   })
-// }
-
 // Create plant Baddie factory:
 
 let plantBaddieTypes = ["Tangle Vine", "Thorn Spitter", "Poison Puff"]
@@ -300,6 +294,16 @@ function startFight() {
 
 function enemyTurn() {
   enemy.attack()
+}
+
+function loseItems() {
+  Object.keys(matsi.inventory).forEach(key => {
+    if(matsi.inventory[key] > 0) {
+      matsi.inventory[key] -= 1;
+    } else {
+      matsi.inventory[key] = 0;
+    }
+  })
 }
 
 function disableMainBtns() {
